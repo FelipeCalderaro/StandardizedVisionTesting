@@ -13,7 +13,6 @@ import io
 
 # FILE IMPORTS
 
-import vision
 
 ##### FLASK SERVER
 
