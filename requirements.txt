@@ -1,0 +1,9 @@
+psychopy
+random
+icecream 
+numpy
+matplotlib
+requests
+flask
+flask_cors
+pillow
