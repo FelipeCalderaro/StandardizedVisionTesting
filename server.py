@@ -1,25 +1,12 @@
 # LIBRARY IMPORTS
-from pprint import pprint
 from flask import Flask, jsonify, request, make_response, redirect, Response, send_file
 from flask_cors import CORS, cross_origin
 from base64 import encodebytes
-from datetime import datetime
-from pathlib import Path
 from icecream import ic
-from time import sleep
-from uuid import uuid4
 from PIL import Image
 
 import matplotlib.pyplot as plt
-from psychopy.hardware.crs.bits import status
-import psychopy.visual
-import psychopy.event
-import matplotlib
-import requests
-import random
 import socket
-import json
-import time
 import os
 import io
 
