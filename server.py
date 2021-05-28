@@ -23,9 +23,6 @@ app.config["CORS_HEADERS"] = "Content-Type"
 ######## CONFIGS FOR PROGRAMS #########
 ####### SETUP
 
-Vision = vision.Vision()
-GratingPhases = vision.GratingPhases()
-
 
 # headers for sending
 headers = {"Content-Type": "Application/json"}
