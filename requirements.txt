@@ -1,4 +1,3 @@
-psychopy
 random
 icecream 
 numpy

@@ -87,57 +87,6 @@ def page_not_found(error):
     return redirect("https://photricity.com/flw/ajax/", code=302)
 
 
-@app.route("/getImage", methods=["GET"])
-def getImages():
-    image = encodedImage("./teste0.50.png")
-    response = {
-        "A": "testando",
-        "message": "message",
-        "ImageBytes": image,
-    }
-    return jsonify(response)
-
-
-@app.route("/getTest", methods=["GET"])
-def getTest():
-    try:
-        grating_size = 300
-        padding = grating_size * 0.01
-        win = psychopy.visual.Window(
-            size=[grating_size + padding, grating_size + padding],
-            units="pix",
-            fullscr=False,
-            color=[2, 2, 1],
-        )
-
-        grating = psychopy.visual.GratingStim(
-            win=win,
-            units="pix",
-            size=[grating_size, grating_size],
-            # color=[0.5, 1, 0.25],
-        )
-
-        contrast = float(request.headers["contrast"])
-        cycle = float(request.headers["cycle"])
-        rotation = float(request.headers["rotation"])
-        ic(request.headers["rotation"])
-        results = Vision.generateGrating(
-            win,
-            grating,
-            grating_size,
-            contrast,
-            cycle / grating_size,
-            rotation,
-        )
-        results["img"] = encodedImage("/tmp/ContrastSensitivity.png")
-        results["sf"] = int(cycle)
-
-        return jsonify(results)
-
-    except:
-        return Response(status=400)
-
-
 @app.route("/calculateResults", methods=["POST"])
 def calculateResults():
     # try:
