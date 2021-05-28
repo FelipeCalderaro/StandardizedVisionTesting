@@ -119,13 +119,15 @@ def getTest():
 
         contrast = float(request.headers["contrast"])
         cycle = float(request.headers["cycle"])
-
+        rotation = float(request.headers["rotation"])
+        ic(request.headers["rotation"])
         results = Vision.generateGrating(
             win,
             grating,
             grating_size,
             contrast,
             cycle / grating_size,
+            rotation,
         )
         results["img"] = encodedImage("/tmp/ContrastSensitivity.png")
         results["sf"] = int(cycle)
@@ -143,13 +145,13 @@ def calculateResults():
     resultContrastValues = request.json["values"]
     fig, ax = plt.subplots()
 
-    ax.plot(range(1, 18), resultContrastValues)
+    ax.plot(range(1, len(resultContrastValues) + 1), resultContrastValues)
     ax.set(
         xlabel="Trial number",
         ylabel="Contrast",
         title=f"{request.json['cycle']} Spacial Frequencies (cycles/degree)",
     )
-    ax.set_xlim([0, 18])
+    ax.set_xlim([0, len(resultContrastValues) + 1])
     ax.grid()
     plt.draw()
     plt.savefig("/tmp/results.png")

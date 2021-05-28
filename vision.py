@@ -1,8 +1,12 @@
+from psychopy.logging import data
 import psychopy.visual
 import psychopy.event
 
 import random
 from icecream import ic
+
+import numpy as np
+import seaborn as sns
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -37,8 +41,7 @@ class Vision:
         else:
             return 0
 
-    def generateGrating(self, win, grating, size, contrast, sf):
-        rotation = self.calculateIfRotated()
+    def generateGrating(self, win, grating, size, contrast, sf, rotation):
         # contrast = round(random.uniform(0, 0.6), 2)
         # contrast = 0.03
 
@@ -113,16 +116,16 @@ class Vision:
 
             result.append(trialResult)
 
-        fig, ax = plt.subplots()
+        fig, fig = plt.subplots()
 
-        ax.plot(range(1, 19), [i["values"]["contrast"] for i in result])
-        ax.set(
+        fig.plot(range(1, 19), [i["values"]["contrast"] for i in result])
+        fig.set(
             xlabel="Trial number",
             ylabel="Contrast",
             title=f"{cycle} Spacial Frequencies (cycles/degree)",
         )
-        ax.set_xlim([0, 19])
-        ax.grid()
+        fig.set_xlim([0, 19])
+        fig.grid()
         plt.draw()
 
         # to save image
@@ -201,5 +204,47 @@ class Vision:
 #     plt.show()
 
 
-# if __name__ == "__main__":
-#     main()
+# def main():
+#     testValues = np.array(
+#         [
+#             0.5,
+#             0.25,
+#             0.25,
+#             0.125,
+#             0.25,
+#             0.25,
+#             0.25,
+#             0.25,
+#             0.25,
+#             0.25,
+#             0.25,
+#             0.25,
+#             0.25,
+#             0.125,
+#             0.125,
+#             0.0625,
+#             0.0625,
+#         ]
+#     )
+
+#     ic(len(testValues))
+
+#     sns.set_theme(style="darkgrid")
+#     fig = sns.relplot(
+#         x=range(0, 17),
+#         y=testValues,
+#         kind="line",
+#     )
+#     fig.fig.set_size_inches(8, 4)
+#     fig.height = 10
+
+#     plt.tight_layout()
+#     plt.subplots_adjust(top=0.9)
+#     plt.xlabel("Numero de imagens")
+#     plt.ylabel("Contraste")
+#     # plt.figure(figsize=(10, 8))
+#     plt.show()
+
+
+if __name__ == "__main__":
+    main()
