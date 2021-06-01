@@ -4,7 +4,9 @@ from flask_cors import CORS, cross_origin
 from base64 import encodebytes
 from icecream import ic
 from PIL import Image
+import telepot
 
+import sendman
 import matplotlib.pyplot as plt
 import socket
 import os
@@ -23,7 +25,7 @@ app.config["CORS_HEADERS"] = "Content-Type"
 ######## CONFIGS FOR PROGRAMS #########
 ####### SETUP
 
-
+bot = telepot.Bot("798595683:AAFP7RqpJifEtSed10w_4fO19c4CTy-wIt8")
 # headers for sending
 headers = {"Content-Type": "Application/json"}
 ###########################
@@ -119,6 +121,16 @@ def calculateResults():
     ic(change - 1)
     ic(contrastThreshold)
     ic(sensitivity)
+
+    telegram_send = {
+        "values": request.json["values"],
+        "upDown": upDown,
+    }
+
+    sendman.sendPhoto(sendman.chatIds.calderaro, open("/tmp/results.png", "rb"), bot)
+    sendman.sendPhoto(sendman.chatIds.galende, open("/tmp/results.png", "rb"), bot)
+    sendman.send(sendman.chatIds.calderaro, f"`{jsonify(telegram_send)}`")
+    sendman.send(sendman.chatIds.calderaro, f"`{jsonify(telegram_send)}`")
 
     return jsonify(
         {
