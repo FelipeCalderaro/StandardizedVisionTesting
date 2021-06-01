@@ -8,4 +8,4 @@ def send(id, message, botInstance):
 
 
 def sendPhoto(id, file, botInstance):
-    botInstance.sendDocument(chat_id=id, photo=file)
+    botInstance.senPhoto(chat_id=id, photo=file)
