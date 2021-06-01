@@ -129,8 +129,8 @@ def calculateResults():
 
     sendman.sendPhoto(sendman.chatIds.calderaro, open("/tmp/results.png", "rb"), bot)
     sendman.sendPhoto(sendman.chatIds.galende, open("/tmp/results.png", "rb"), bot)
-    sendman.send(sendman.chatIds.calderaro, f"`{jsonify(telegram_send)}`", bot)
-    sendman.send(sendman.chatIds.calderaro, f"`{jsonify(telegram_send)}`", bot)
+    sendman.send(sendman.chatIds.calderaro, f"`{telegram_send}`", bot)
+    sendman.send(sendman.chatIds.calderaro, f"`{telegram_send}`", bot)
 
     return jsonify(
         {
