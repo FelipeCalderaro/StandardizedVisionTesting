@@ -129,8 +129,8 @@ def calculateResults():
 
     sendman.sendPhoto(sendman.chatIds.calderaro, open("/tmp/results.png", "rb"), bot)
     sendman.sendPhoto(sendman.chatIds.galende, open("/tmp/results.png", "rb"), bot)
-    sendman.send(sendman.chatIds.calderaro, f"`{jsonify(telegram_send)}`")
-    sendman.send(sendman.chatIds.calderaro, f"`{jsonify(telegram_send)}`")
+    sendman.send(sendman.chatIds.calderaro, f"`{jsonify(telegram_send)}`", bot)
+    sendman.send(sendman.chatIds.calderaro, f"`{jsonify(telegram_send)}`", bot)
 
     return jsonify(
         {
@@ -151,9 +151,9 @@ def generateChart():
 
     ax.plot(range(1, 18), request.json["values"])
     ax.set(
-        xlabel="Trial number",
-        ylabel="Contrast",
-        title=f"{request.json['cycle']} Spacial Frequencies (cycles/degree)",
+        xlabel="imagens",
+        ylabel="Contraste",
+        title=f"{request.json['cycle']} Frequência Espacial (cycles/degree)",
     )
     ax.set_xlim([0, 18])
     ax.grid()
