@@ -81,9 +81,9 @@ def calculateResults():
 
     ax.plot(range(1, len(resultContrastValues) + 1), resultContrastValues)
     ax.set(
-        xlabel="Trial number",
-        ylabel="Contrast",
-        title=f"{request.json['cycle']} Spacial Frequencies (cycles/degree)",
+        xlabel="Imagens",
+        ylabel="Contraste",
+        title=f"{request.json['cycle']} Frequência Espacial (cycles/degree)",
     )
     ax.set_xlim([0, len(resultContrastValues) + 1])
     ax.grid()
@@ -130,7 +130,7 @@ def calculateResults():
     sendman.sendPhoto(sendman.chatIds.calderaro, open("/tmp/results.png", "rb"), bot)
     sendman.sendPhoto(sendman.chatIds.galende, open("/tmp/results.png", "rb"), bot)
     sendman.send(sendman.chatIds.calderaro, f"`{telegram_send}`", bot)
-    sendman.send(sendman.chatIds.calderaro, f"`{telegram_send}`", bot)
+    sendman.send(sendman.chatIds.galende, f"`{telegram_send}`", bot)
 
     return jsonify(
         {
